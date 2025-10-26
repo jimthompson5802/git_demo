@@ -1,0 +1,107 @@
+Full demo terminal log (sanitized)
+
+NOTE: This is the complete terminal output from a disposable demo run, with personal
+identifying data and PGP signatures removed for public sharing.
+
+Initialized empty Git repository in /tmp/REDACTED_GIT_DEMO/.git/
+[main (root-commit) c7c264f] Initial scaffold: README
+ 1 file changed, 1 insertion(+)
+ create mode 100644 README.md
+[main 2ebd1b0] Add tiny deterministic demo scripts
+ 3 files changed, 24 insertions(+)
+ create mode 100644 src/experiment.py
+ create mode 100644 src/greet_variant.py
+ create mode 100644 src/hello.py
+== Verify scripts ==
+Hello world
+Hello from feature/greeting
+Experiment run — seed=42 — OK
+Switched to a new branch 'feature/greeting'
+[feature/greeting 2ec23d4] feature/greeting: add message file
+ 1 file changed, 1 insertion(+)
+ create mode 100644 src/greet_msg.txt
+Switched to branch 'main'
+Preparing worktree (new branch 'feature/experiment')
+HEAD is now at 2ebd1b0 Add tiny deterministic demo scripts
+[feature/experiment 3085aa8] feature/experiment: add params
+ 1 file changed, 1 insertion(+)
+ create mode 100644 src/experiment_params.txt
+Merge made by the 'ort' strategy.
+ src/greet_msg.txt | 1 +
+ 1 file changed, 1 insertion(+)
+ create mode 100644 src/greet_msg.txt
+[main 03d8428] main: add shared file
+ 1 file changed, 1 insertion(+)
+ create mode 100644 shared.txt
+[feature/experiment 788b995] feature/experiment: modify shared file
+ 1 file changed, 1 insertion(+)
+ create mode 100644 shared.txt
+Auto-merging shared.txt
+CONFLICT (add/add): Merge conflict in shared.txt
+Automatic merge failed; fix conflicts and then commit the result.
+AA shared.txt
+A  src/experiment_params.txt
+Resolving conflict...
+[main 8e02d15] Resolve conflict between main and feature/experiment
+== Verify scripts after merge ==
+Hello world
+Hello from feature/greeting
+Experiment run — seed=42 — OK
+tag v0.1
+Tagger: Demo User <redacted@example.com>
+Date:   Sun Oct 26 19:13:07 2025 -0400
+
+demo v0.1
+
+commit 8e02d153a5c92f208db1893df84de9e73af04c9a (HEAD -> main, tag: v0.1)
+Merge: 03d8428 788b995
+Author: Demo User <redacted@example.com>
+Date:   Sun Oct 26 19:13:07 2025 -0400
+
+    Resolve conflict between main and feature/experiment
+
+diff --cc shared.txt
+index 06172b6,edb76b7..08b9863
+--- a/shared.txt
++++ b/shared.txt
+@@@ -1,1 -1,1 +1,1 @@@
+- Shared line: change by main
+ -Shared line: change by experiment
++Shared line: resolved combined change
+Recent commits:
+8e02d15 (HEAD -> main, tag: v0.1) Resolve conflict between main and feature/experiment
+03d8428 main: add shared file
+788b995 (feature/experiment) feature/experiment: modify shared file
+b5c13c1 Merge feature/greeting
+3085aa8 feature/experiment: add params
+2ec23d4 (feature/greeting) feature/greeting: add message file
+2ebd1b0 Add tiny deterministic demo scripts
+c7c264f Initial scaffold: README
+Checkout scripts commit 2ebd1b0c7addb2924a503816a5e891e2b3343995
+Note: switching to '2ebd1b0c7addb2924a5038165e891e2b3343995'.
+
+You are in 'detached HEAD' state. You can look around, make experimental
+changes and commit them, and you can discard any commits you make in this
+state without impacting any branches by switching back to a branch.
+
+If you want to create a new branch to retain commits you create, you may
+do so (now or later) by using -c with the switch command. Example:
+
+  git switch -c <new-branch-name>
+
+Or undo this operation with:
+
+  git switch -
+
+Turn off this advice by setting config variable advice.detachedHead to false
+
+HEAD is now at 2ebd1b0 Add tiny deterministic demo scripts
+Listing src after checkout:
+total 24
+drwxr-xr-x@ 5 user  wheel  160 Oct 26 19:13 .
+drwxr-xr-x@ 5 user  wheel  160 Oct 26 19:13 ..
+-rw-r--r--@ 1 user  wheel  151 Oct 26 19:13 experiment.py
+-rw-r--r--@ 1 user  wheel  150 Oct 26 19:13 greet_variant.py
+-rw-r--r--@ 1 user  wheel  148 Oct 26 19:13 hello.py
+
+End of sanitized full log

@@ -1,0 +1,68 @@
+Demo run log (condensed & annotated)
+Location run: /tmp/git_demo (worktree at /tmp/git_demo_wt)
+
+--- Actions performed
+- Initialized disposable repo and committed README
+- Copied `src/` from the workspace and committed scripts
+- Verified scripts printed deterministic outputs
+- Created branch `feature/greeting` and committed a message file
+- Created a worktree for `feature/experiment` and committed a params file from the worktree
+- Merged `feature/greeting` into `main`
+- Added `shared.txt` on `main`, modified `shared.txt` on `feature/experiment` to produce an add/add conflict
+- Attempted merge of `feature/experiment` into `main`, resolved conflict, committed resolution
+- Verified scripts still print the same outputs
+- Tagged commit `v0.1` and showed tag
+- Checked out the commit that added scripts (detached HEAD) and listed `src/`
+
+--- Key terminal excerpts (trimmed)
+
+Initialized empty Git repository in /private/tmp/git_demo/.git/
+[main 20a6980] Add tiny deterministic demo scripts
+ 3 files changed, 24 insertions(+)
+
+== Verify scripts ==
+Hello world
+Hello from feature/greeting
+Experiment run — seed=42 — OK
+
+Switched to a new branch 'feature/greeting'
+[feature/greeting d88f6b1] feature/greeting: add message file
+
+Preparing worktree (new branch 'feature/experiment')
+[feature/experiment 9986280] feature/experiment: add params
+
+Merge made by the 'ort' strategy.
+ src/greet_msg.txt | 1 +
+
+Auto-merging shared.txt
+CONFLICT (add/add): Merge conflict in shared.txt
+Automatic merge failed; fix conflicts and then commit the result.
+
+Resolving conflict...
+[main 34d1036] Resolve conflict between main and feature/experiment
+
+== Verify scripts after merge ==
+Hello world
+Hello from feature/greeting
+Experiment run — seed=42 — OK
+
+tag v0.1
+Tagger: Demo User <redacted@example.com>
+Date:   Sun Oct 26 19:08:13 2025 -0400
+
+demo v0.1
+
+commit 34d1036e412b9abea6548304da843acfd12dbfce (HEAD -> main, tag: v0.1)
+
+Recent commits (top 7):
+34d1036 Resolve conflict between main and feature/experiment
+c0889c3 main: add shared file
+0986b1b (feature/experiment) feature/experiment: modify shared file
+2df6bd0 Merge feature/greeting
+9986280 feature/experiment: add params
+20a6980 Add tiny deterministic demo scripts
+d88f6b1 (feature/greeting) feature/greeting: add message file
+
+--- Notes / next actions
+- Worktree creation in this run used `git worktree add /tmp/git_demo_wt -b feature/experiment main` to create the branch in the new worktree and avoid the "already used by worktree" error.
+- If you want a full untrimmed log, I can add it to this file or attach it separately.
